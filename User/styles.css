@@ -1,0 +1,177 @@
+/* General Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+/* Container */
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Header */
+header {
+    background: #35424a;
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Sidebar */
+.sidebar {
+    float: left;
+    width: 20%;
+    background: #35424a;
+    padding: 20px;
+    height: 100vh; /* Full height sidebar */
+    position: fixed; /* Fixed sidebar */
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    border-radius: 5px;
+}
+
+.sidebar ul li a:hover {
+    background-color: #4a4e54; /* Change background on hover */
+}
+
+/* Main Dashboard Content */
+.dashboard-content {
+    margin-left: 20%; /* Make space for sidebar */
+    padding: 20px;
+    background-color: #ffffff;
+    height: 100vh; /* Full height to match sidebar */
+}
+
+/* Profile Section */
+.profile {
+    float: right;
+    margin-right: 20px;
+    padding: 10px;
+}
+
+.profile a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Forms */
+form {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    background: #35424a;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #4a4e54;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th,
+td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background: #35424a;
+    color: #ffffff;
+}
+
+/* Background Image for Dashboard */
+.dashboard-background {
+    background-image: url('path/to/your/parking-background.jpg'); /* Adjust the path to your image */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    padding: 20px;
+    color: #ffffff; /* Text color on background */
+}
+
+/* Miscellaneous */
+h1, h2 {
+    color: #35424a;
+}
+ 
+/* Specific Styles for Login and Registration Pages */
+.login-container, .registration-container {
+    width: 40%;
+    margin: 100px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2, .registration-container h2 {
+    text-align: center;
+}
+
+.login-container button, .registration-container button {
+    background-color: #35424a;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.login-container button:hover, .registration-container button:hover {
+    background-color: #4a4e54;
+}

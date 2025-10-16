@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e9ecef;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: #ffffff;
+            padding: 25px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form label {
+            text-align: left;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333333;
+        }
+
+        form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        form input:focus {
+            outline: none;
+            border-color: #80bdff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+        }
+
+        form input.error {
+            border-color: #dc3545;
+        }
+
+        form input.success {
+            border-color: #28a745;
+        }
+
+        form button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 12px 15px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: #dc3545;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .success {
+            color: #28a745;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .password-strength {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .weak {
+            color: red;
+        }
+
+        .medium {
+            color: orange;
+        }
+
+        .strong {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Register</h2>
+        <form id="registerForm" action="register.php" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <small class="error" id="usernameError"></small>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <small class="error" id="emailError"></small>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="mobile">Mobile Number:</label>
+            <input type="text" id="mobile" name="mobile" required>
+            <small class="error" id="mobileError"></small>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <small class="password-strength" id="passwordStrength"></small>
+
+            <label for="license">License Number:</label>
+            <input type="text" id="license" name="license" required>
+            <small class="error" id="licenseError"></small>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        const username = document.getElementById("username");
+        const email = document.getElementById("email");
+        const mobile = document.getElementById("mobile");
+        const password = document.getElementById("password");
+        const license = document.getElementById("license");
+        const form = document.getElementById("registerForm");
+
+        const usernameError = document.getElementById("usernameError");
+        const emailError = document.getElementById("emailError");
+        const mobileError = document.getElementById("mobileError");
+        const passwordStrength = document.getElementById("passwordStrength");
+        const licenseError = document.getElementById("licenseError");
+
+        const validateUsername = () => {
+            const regex = /^[a-zA-Z0-9_]{3,20}$/;
+            if (!regex.test(username.value)) {
+                usernameError.textContent = "Username must be 3-20 characters and can include underscores.";
+                username.classList.add("error");
+                return false;
+            }
+            usernameError.textContent = "";
+            username.classList.remove("error");
+            return true;
+        };
+
+        const validateEmail = () => {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!regex.test(email.value)) {
+                emailError.textContent = "Please enter a valid email.";
+                email.classList.add("error");
+                return false;
+            }
+            emailError.textContent = "";
+            email.classList.remove("error");
+            return true;
+        };
+
+        const validateMobile = () => {
+            const regex = /^\d{10}$/;
+            if (!regex.test(mobile.value)) {
+                mobileError.textContent = "Mobile number must be 10 digits.";
+                mobile.classList.add("error");
+                return false;
+            }
+            mobileError.textContent = "";
+            mobile.classList.remove("error");
+            return true;
+        };
+
+        const validatePassword = () => {
+            const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            const strengthRegex = {
+                strong: /^.*(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&]).*$/,
+                medium: /^.*(?=.{6,})(?=.*[a-z])(?=.*\d).*$/
+            };
+            if (strengthRegex.strong.test(password.value)) {
+                passwordStrength.textContent = "Strong password.";
+                passwordStrength.className = "password-strength strong";
+            } else if (strengthRegex.medium.test(password.value)) {
+                passwordStrength.textContent = "Medium password.";
+                passwordStrength.className = "password-strength medium";
+            } else {
+                passwordStrength.textContent = "Weak password.";
+                passwordStrength.className = "password-strength weak";
+            }
+            if (!regex.test(password.value)) {
+                return false;
+            }
+            return true;
+        };
+
+        const validateLicense = () => {
+            const regex = /^[A-Z0-9]{6,12}$/;
+            if (!regex.test(license.value)) {
+                licenseError.textContent = "License number must be alphanumeric and 6-12 characters.";
+                license.classList.add("error");
+                return false;
+            }
+            licenseError.textContent = "";
+            license.classList.remove("error");
+            return true;
+        };
+
+        username.addEventListener("input", validateUsername);
+        email.addEventListener("input", validateEmail);
+        mobile.addEventListener("input", validateMobile);
+        password.addEventListener("input", validatePassword);
+        license.addEventListener("input", validateLicense);
+
+        form.addEventListener("submit", (e) => {
+            if (!validateUsername() || !validateEmail() || !validateMobile() || !validatePassword() || !validateLicense()) {
+                e.preventDefault(); // Prevent form submission if validation fails
+                alert("Please fix the errors before submitting.");
+            }
+        });
+    </script>
+</body>
+</html>

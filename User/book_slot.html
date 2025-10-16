@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Parking Slot</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .slot {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            display: inline-block;
+            text-align: center;
+            line-height: 100px;
+            font-weight: bold;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: white;
+            font-size: 18px;
+        }
+        .available { background-color: #dc3545; } /* Red */
+        .pending { background-color: #ffc107; } /* Yellow */
+        .booked { background-color: #28a745; } /* Green */
+        
+        h2 {
+            color: #343a40;
+        }
+
+        form {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Book Parking Slot</h2>
+        
+        <div class="row">
+            <div class="col-12 text-center">
+                <h4>Available Slots</h4>
+                <div>
+                    <!-- Display 20 slots with dummy status -->
+                    <div class="slot available">1</div>
+                    <div class="slot booked">2</div>
+                    <div class="slot pending">3</div>
+                    <div class="slot available">4</div>
+                    <div class="slot available">5</div>
+                    <div class="slot booked">6</div>
+                    <div class="slot pending">7</div>
+                    <div class="slot available">8</div>
+                    <div class="slot available">9</div>
+                    <div class="slot booked">10</div>
+                    <div class="slot pending">11</div>
+                    <div class="slot available">12</div>
+                    <div class="slot available">13</div>
+                    <div class="slot booked">14</div>
+                    <div class="slot pending">15</div>
+                    <div class="slot available">16</div>
+                    <div class="slot available">17</div>
+                    <div class="slot booked">18</div>
+                    <div class="slot pending">19</div>
+                    <div class="slot available">20</div>
+                </div>
+            </div>
+        </div>
+
+        <form action="book_slot.php" method="POST" class="mt-4">
+            <div class="form-group">
+                <label for="slot">Select Slot:</label>
+                <select id="slot" name="slot" class="form-control" required>
+                    <option value="1">Slot 1</option>
+                    <option value="2">Slot 2</option>
+                    <option value="3">Slot 3</option>
+                    <option value="4">Slot 4</option>
+                    <option value="5">Slot 5</option>
+                    <option value="6">Slot 6</option>
+                    <option value="7">Slot 7</option>
+                    <option value="8">Slot 8</option>
+                    <option value="9">Slot 9</option>
+                    <option value="10">Slot 10</option>
+                    <option value="11">Slot 11</option>
+                    <option value="12">Slot 12</option>
+                    <option value="13">Slot 13</option>
+                    <option value="14">Slot 14</option>
+                    <option value="15">Slot 15</option>
+                    <option value="16">Slot 16</option>
+                    <option value="17">Slot 17</option>
+                    <option value="18">Slot 18</option>
+                    <option value="19">Slot 19</option>
+                    <option value="20">Slot 20</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="date">Select Date:</label>
+                <input type="date" id="date" name="date" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="time">Booking Time:</label>
+                <input type="time" id="time" name="time" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="vehicle_type">Vehicle Type:</label>
+                <select id="vehicle_type" name="vehicle_type" class="form-control" required>
+                    <option value="car">Car</option>
+                    <option value="bike">Bike</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="payment_type">Payment Type:</label>
+                <select id="payment_type" name="payment_type" class="form-control" required>
+                    <option value="cash">Cash</option>
+                    <option value="online">Online</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Book Slot</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

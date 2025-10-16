@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Slots</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #dae2f8, #d6a4a4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            max-width: 900px;
+            width: 90%;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #444;
+            text-align: center;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        #availableSlots {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+        }
+
+        .slot {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 120px;
+            font-size: 1.2rem;
+            color: white;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .slot.available {
+            background-color: #28a745; /* Green */
+        }
+
+        .slot.booked {
+            background-color: #dc3545; /* Red */
+        }
+
+        .slot.pending {
+            background-color: #ffc107; /* Yellow */
+        }
+
+        .slot:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        @media (max-width: 576px) {
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .slot {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Available Parking Slots</h2>
+        <div id="availableSlots">
+            <!-- Example slots with different statuses -->
+            <div class="slot available" onclick="bookSlot(this)">Slot 1</div>
+            <div class="slot booked" onclick="alert('This slot is already booked.')">Slot 2</div>
+            <div class="slot pending" onclick="alert('Booking approval is pending.')">Slot 3</div>
+            <div class="slot available" onclick="bookSlot(this)">Slot 4</div>
+            <div class="slot booked" onclick="alert('This slot is already booked.')">Slot 5</div>
+            <div class="slot pending" onclick="alert('Booking approval is pending.')">Slot 6</div>
+            <div class="slot available" onclick="bookSlot(this)">Slot 7</div>
+            <div class="slot available" onclick="bookSlot(this)">Slot 8</div>
+        </div>
+    </div>
+
+    <script>
+        function bookSlot(slot) {
+            if (slot.classList.contains('available')) {
+                if (confirm("Do you want to book this slot?")) {
+                    slot.classList.remove('available');
+                    slot.classList.add('pending');
+                    slot.textContent = "Pending Approval";
+                }
+            } else {
+                alert('This slot is not available for booking.');
+            }
+        }
+    </script>
+</body>
+</html>

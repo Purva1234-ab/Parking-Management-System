@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            height: 100vh;
+            width: 250px;
+            background: linear-gradient(145deg, #007bff, #0056b3);
+            color: #ffffff;
+            position: fixed;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h4 {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .sidebar a {
+            color: #ffffff;
+            font-size: 1rem;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .sidebar a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .sidebar a i {
+            margin-right: 10px;
+        }
+
+        /* Main Content Styles */
+        .w-100 {
+            margin-left: 250px;
+            padding: 15px;
+        }
+
+        .top-bar {
+            background-color: #ffffff;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar h5 {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .profile-dropdown {
+            position: relative;
+        }
+
+        .profile-dropdown .dropdown-menu {
+            right: 0;
+            left: auto;
+        }
+
+        .welcome-message {
+            margin: 20px 0;
+            font-size: 1.25rem;
+            color: #343a40;
+        }
+
+        .welcome-message span {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .content {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .w-100 {
+                margin-left: 0;
+            }
+
+            .sidebar a {
+                justify-content: center;
+            }
+
+            .sidebar a i {
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h4>Dashboard</h4>
+            <hr style="border-color: rgba(255, 255, 255, 0.5);">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="book_slot.html"><i class="fas fa-parking"></i> Book Parking Slot</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="booking_history.html"><i class="fas fa-history"></i> Booking History</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="booking_status.html"><i class="fas fa-tasks"></i> Booking Status</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="available_slots.html"><i class="fas fa-search"></i> Available Slots</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="w-100">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <h5>Welcome to Your Dashboard</h5>
+                <div class="profile-dropdown">
+                    <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-circle"></i> Profile
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="profile.php"><i class="fas fa-user"></i> View Profile</a>
+                        <a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Welcome Message -->
+            <div class="welcome-message">
+                Welcome, <span id="username">John Doe</span>! We're glad to have you back.
+            </div>
+
+            <!-- Content -->
+            <div class="content">
+                <h4>Main Content</h4>
+                <p>Select an option from the sidebar to manage your parking slots, view history, check statuses, or update your profile.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
